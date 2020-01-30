@@ -31,7 +31,7 @@
         
         "keyword": {
             "name": "keyword.control.mydsl",
-            "match": "\\b(Hello|from)\\b|!"
+            "match": "\\b(model|capsule|statemachine|initial|state|transition|from|to|action|conjugate|external|port|part|connect|protocol|in|out|message)\\b"
 
         }
     },
