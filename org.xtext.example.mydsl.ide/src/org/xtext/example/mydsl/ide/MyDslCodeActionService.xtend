@@ -21,7 +21,7 @@ class MyDslCodeActionService implements ICodeActionService2 {
 	}
 
 	override getCodeActions(Options options) {
-		val document = options.document
+		/*val document = options.document
 		val params = options.codeActionParams
 		val resource = options.resource
 		val result = <CodeAction>newArrayList
@@ -45,7 +45,7 @@ class MyDslCodeActionService implements ICodeActionService2 {
 
 			}
 		}
-		return result.map[Either.forRight(it)]
+		return result.map[Either.forRight(it)]*/
 	}
 
 }

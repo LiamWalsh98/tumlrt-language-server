@@ -5,12 +5,13 @@ package org.xtext.example.mydsl.formatting2
 
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
-import org.xtext.example.mydsl.myDsl.Greeting
-import org.xtext.example.mydsl.myDsl.Model
 
 class MyDslFormatter extends AbstractFormatter2 {
 
-	def dispatch void format(Model model, extension IFormattableDocument document) {
+	override dispatch void format(Object obj, extension IFormattableDocument document) {
+	}
+	
+	/*def dispatch void format(Model model, extension IFormattableDocument document) {
 		for (Greeting greetings : model.getGreetings()) {
 			greetings.format;
 		}
@@ -22,6 +23,6 @@ class MyDslFormatter extends AbstractFormatter2 {
 			model.regionFor.keyword("from").prepend[newLine]
 			interior(model.regionFor.keyword("from").previousSemanticRegion, model.regionFor.keyword("!"))[indent]
 		}
-	}
+	}*/
 
 }

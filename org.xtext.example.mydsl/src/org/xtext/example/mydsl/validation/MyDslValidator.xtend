@@ -4,7 +4,6 @@
 package org.xtext.example.mydsl.validation
 
 import org.eclipse.xtext.validation.Check
-import org.xtext.example.mydsl.myDsl.Greeting
 import org.xtext.example.mydsl.myDsl.MyDslPackage
 
 /**
@@ -14,6 +13,7 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage
  */
 class MyDslValidator extends AbstractMyDslValidator {
 	
+	/*
 	public static val INVALID_NAME = 'invalidName'
 
 	@Check
@@ -23,6 +23,6 @@ class MyDslValidator extends AbstractMyDslValidator {
 					MyDslPackage.Literals.GREETING__NAME,
 					INVALID_NAME)
 		}
-	}
+	}*/
 	
 }

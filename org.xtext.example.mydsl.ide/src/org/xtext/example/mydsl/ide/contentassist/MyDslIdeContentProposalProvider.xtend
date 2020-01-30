@@ -17,6 +17,7 @@ class MyDslIdeContentProposalProvider extends IdeContentProposalProvider {
 
 	override protected _createProposals(RuleCall ruleCall, ContentAssistContext context,
 		IIdeContentProposalAcceptor acceptor) {
+		/*
 		if (greetingRule == ruleCall.rule && context.currentModel !== null) {
 			val scope = scopeProvider.getScope(context.currentModel, MyDslPackage.Literals.GREETING__FROM)
 			acceptor.accept(
@@ -26,7 +27,7 @@ class MyDslIdeContentProposalProvider extends IdeContentProposalProvider {
 			acceptor.accept(
 				proposalCreator.createSnippet('''Hello ${1:name} from ${2:fromName}!''',
 					"New Greeting (Template with Placeholder)", context), 0)
-		}
+		}*/
 		super._createProposals(ruleCall, context, acceptor)
 	}
 

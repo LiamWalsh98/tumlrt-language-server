@@ -1,4 +1,8 @@
 dependencies {
+	compile fileTree(dir: 'libs', include: '*.jar')
+}
+
+dependencies {
 	compile "org.eclipse.xtext:org.eclipse.xtext:${xtextVersion}"
 	compile "org.eclipse.xtext:org.eclipse.xtext.xbase:${xtextVersion}"
 }
