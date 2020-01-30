@@ -1,2 +1,53 @@
-/* this is a definition in another file */
-model Test {}
+model PingPong {
+		
+	capsule Pinger {
+		
+		conjugate external port pingPort : PingPongProtocol;
+		
+		statemachine {
+			initial start;
+			state playing ;
+
+			transition t1 
+				from start 
+				to playing;	
+			
+			transition t2
+				from playing
+				to playing
+				triggers on pingPort : pong;
+		}
+	}	
+	
+	capsule Ponger {
+		external port pongPort : PingPongProtocol;
+		
+		statemachine {
+			initial start;
+			state playing ;
+			
+			transition t1 
+				from start 
+				to playing;
+								
+			transition t2
+				from playing
+				to playing
+				triggers on pongPort : ping;
+			
+		}
+	}
+	
+	capsule Top {
+		part pinger : Pinger;
+		part ponger : Ponger;
+		
+		connect pinger : pingPort to ponger : pongPort;
+	}
+	
+	protocol PingPongProtocol {
+		in message ping(); 
+		out message pong();
+	}
+
+}
