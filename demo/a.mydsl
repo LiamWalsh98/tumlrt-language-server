@@ -1,4 +1,17 @@
-Hello Xtext!
-Hello VSCode from Xtext!
-Hello ThisFile from Other!
-Hello you!
+model PingerPonger {
+    capsule Pinger {
+        statemachine {
+            initial start;
+            state playing;
+
+            transition t1 
+                from start 
+                to playing;
+
+            transition t2
+                from playing
+                to playing;
+            
+        }
+    }
+}
