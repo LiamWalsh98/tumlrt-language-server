@@ -3,11 +3,20 @@
  */
 package org.xtext.example.mydsl.generator
 
+import java.io.IOException
+import java.util.Collections
+import java.util.ArrayList
+
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eclipse.papyrusrt.xtumlrt.umlrt.RTModel
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl
+// import org.eclipse.papyrusrt.codegen.UMLRTCodeGenerator
+// import org.eclipse.papyrusrt.codegen.config.CodeGenProvider
 
 /**
  * Generates code from your model files on save.
@@ -16,18 +25,28 @@ import org.eclipse.xtext.generator.IGeneratorContext
  */
 class MyDslGenerator extends AbstractGenerator {
 
+	//static UMLRTCodeGenerator generator = CodeGenProvider.getDefault().get();
+
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-        /*val fileName = URI.decode(resource.URI.trimFileExtension.lastSegment)
-        fsa.generateFile(fileName+"Greeter.java", '''
-        public class «fileName»Greeter {
-            
-            public static void main(String[] args) {
-                «FOR g : resource.allContents.filter(Greeting).toIterable»
-                    System.out.println("Hello «g.name» «IF g.from !== null» from «g.from.name»«ENDIF»!");
-                «ENDFOR»
-            }
-            
+        val fileName = URI.decode(resource.URI.trimFileExtension.lastSegment);
+		val xmiResource = new XMIResourceImpl(URI.createFileURI(fileName+".uml")); 
+		xmiResource.getContents().add(resource.allContents.filter(RTModel).next());
+
+        try {
+            xmiResource.save(Collections.EMPTY_MAP);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        ''')*/
 	}
+	
+	/*
+	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+        val rtModel = resource.allContents.filter(RTModel).next();
+		val topCapsuleName = "Top";
+		val targets = new ArrayList<EObject>();
+		targets.add(rtModel);
+		
+		generator.generate(targets, topCapsuleName, false);
+		
+	}*/
 }
