@@ -8,10 +8,27 @@ import com.google.inject.name.Names
 import org.eclipse.xtext.validation.CompositeEValidator
 // import org.eclipse.xtext.validation.*
 
+import org.eclipse.papyrusrt.xtumlrt.xtext.extras.XTUMLRTTransientValueService;
+import org.eclipse.papyrusrt.xtumlrt.xtext.extras.XTUMLRTValueConverterService;
+import org.eclipse.papyrusrt.xtumlrt.xtext.naming.UmlrtQualifiedNameProvider;
+import org.eclipse.xtext.conversion.IValueConverterService;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.parsetree.reconstr.ITransientValueService;
+import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.scoping.impl.ImportUriGlobalScopeProvider;
+import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider;
+
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class MyDslRuntimeModule extends AbstractMyDslRuntimeModule {
+
+    new() {
+	}
 
     def void configureUseEObjectValidator(Binder binder) {
         binder.bind(typeof(Boolean))
@@ -19,5 +36,22 @@ class MyDslRuntimeModule extends AbstractMyDslRuntimeModule {
         Names.named(CompositeEValidator.USE_EOBJECT_VALIDATOR))
         .toInstance(Boolean.FALSE);
     }
+    
+	override Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
+		return ImportUriGlobalScopeProvider 
+	}
+	override Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return UmlrtQualifiedNameProvider 
+	}
+	override void configureIScopeProviderDelegate(Binder binder) {
+		binder.bind(IScopeProvider).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE)).to(ImportedNamespaceAwareLocalScopeProvider) 
+	}
+	override Class<? extends IValueConverterService> bindIValueConverterService() {
+		return XTUMLRTValueConverterService 
+	}
+	override Class<? extends ITransientValueService> bindITransientValueService() {
+		return XTUMLRTTransientValueService // return super.bindITransientValueService();
+		
+	}
 
 }
