@@ -13,6 +13,12 @@ Requires Visual Studio Code (VS Code) with version 1.4.0 or greater to be on the
 
 This will start VS Code and after a few seconds load the `demo` folder of this repository.
 
+## Generating Code from UML-RT Model
+`cppgen.jar` is the C++ code generator
+to generale code from the xtext generated EMF ([ModelName].uml) file:
+enter `java -jar cppgen.jar ./{path-to-model}/[ModelName].uml`
+
+
 ## Project Structure
 
 - `vscode-extension` (node based VS Code extension to run with a separate server using socket)
