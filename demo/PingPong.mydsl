@@ -6,38 +6,67 @@ model PingPong {
 		
 		statemachine {
 			initial start;
-			state playing ;
+			state playing;
 
 			transition t1 
 				from start 
-				to playing;	
+				to playing
+				action {|#
+						xprintf("Starting game\n");
+						xif ( pingPort.ping().send() ) {
+							printf("ping sent!\n");
+						x} else {
+							printf("Error sending Ping!\n");
+						x}	
+				#|}
+			;	
 			
 			transition t2
 				from playing
 				to playing
-				triggers on pingPort : pong;
+				triggers on pingPort : pong 
+				action {|#
+					xprintf("Pong received!\n");
+					xif (pingPort.ping().send()) {
+						printf("Ping sent!\n");
+					x} else {
+						printf("Error sending Ping!\n");
+					x}
+				#|}
+			;
 		}
 	}	
 	
 	capsule Ponger {
 		external port pongPort : PingPongProtocol;
-		
+
 		statemachine {
 			initial start;
 			state playing ;
 			
 			transition t1 
 				from start 
-				to playing;
+				to playing
+				action {|##|}
+			;
 								
 			transition t2
 				from playing
 				to playing
-				triggers on pongPort : ping;
+				triggers on pongPort : ping 
+				action {|#
+					xprintf("Ping received!\n");
+					xif (pongPort.pong().send()){
+						printf("Pong sent!\n");
+					x} else {
+						printf("Error sending Pong!\n");
+					x}
+				#|}
+			;
 			
 		}
 	}
-	
+
 	capsule Top {
 		part pinger : Pinger;
 		part ponger : Ponger;

@@ -1,4 +1,21 @@
-Hello Xtext!
-Hello VSCode from Xtext!
-Hello ThisFile from Other!
-Hello you!
+model PingPong {
+		
+	capsule Pinger {
+		conjugate external port pingPort : PingPongProtocol;
+	}	
+	
+	capsule Ponger {
+		external port pongPort : PingPongProtocol;
+	}
+
+	capsule Top {
+		part pinger : Pinger;
+		part ponger : Ponger;
+		connect pinger : pingPort to ponger : pongPort;
+	}
+	
+	protocol PingPongProtocol {
+
+    }
+
+}

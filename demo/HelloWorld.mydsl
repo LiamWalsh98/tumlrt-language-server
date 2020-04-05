@@ -1,0 +1,16 @@
+model HelloWorld {
+    capsule Top {
+        statemachine {
+			initial start;
+			state playing;
+
+			transition t1 
+				from start 
+				to playing
+				action {|#
+                    printf("Hello World!\n");
+				#|}
+			;	
+		}
+    }
+}
