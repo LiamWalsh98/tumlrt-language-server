@@ -1,0 +1,17 @@
+DIR=`dirname $0`
+IN="$DIR/demo/`basename $1`"
+OUT="$DIR/cpp"
+GENPATH="$DIR/cppgen.jar"
+OUTSRC="$OUT/src"
+
+
+
+echo $DIR
+echo $IN
+echo $OUT
+echo $GENPATH
+
+java -jar $GENPATH $IN --outdir $OUT
+make --directory $OUTSRC clean
+make --directory $OUTSRC
+$OUTSRC/TopMain
