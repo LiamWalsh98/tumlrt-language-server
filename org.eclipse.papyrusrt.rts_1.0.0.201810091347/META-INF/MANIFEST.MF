@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.papyrusrt.rts;singleton:=true
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.201810091347
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.10.0",org.e
+ clipse.gmf.runtime.emf.core;bundle-version="1.7.0",org.eclipse.ui;bun
+ dle-version="[3.107.0,4.0.0)"
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: %providerName
+Eclipse-BundleShape: dir
+
+
