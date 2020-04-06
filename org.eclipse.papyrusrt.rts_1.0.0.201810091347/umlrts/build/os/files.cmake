@@ -1,0 +1,84 @@
+# core files
+
+# platform independent include directories
+set(INCS
+  ${INCS}
+  ${UMLRTS_ROOT}/util/include
+  ${UMLRTS_ROOT}/include
+  ${UMLRTS_ROOT}/umlrt/src/include
+  ${UMLRTS_ROOT}/mqtt/include
+  ${UMLRTS_ROOT}/rapidjson/include
+  )
+
+# sources that make up the RTS services library
+set(SRCS
+  ${SRCS}
+  ${UMLRTS_ROOT}/umlrt/src/umlrtgetopt.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtapi.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtbasicthread.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtcapsule.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtcapsuleid.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtcapsuletocontrollermap.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtcommsport.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtcontroller.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtframeprotocol.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtframeservice.cc
+  ${UMLRTS_ROOT}/umlrt/umlrthashmap.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtinsignal.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtinoutsignal.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtjsoncoder.cc 
+  ${UMLRTS_ROOT}/umlrt/umlrtlogprotocol.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmain.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmainloop.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmaintargetshutdown.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmaintargetstartup.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmessage.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmessagepool.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmessagequeue.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmqttservice.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmqttprotocol.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtmqttproxycapsule.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtobjectclass.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtoutsignal.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtpool.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtprioritymessagequeue.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtprotocol.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtqueue.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtrtsinterfaceumlrt.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtsignal.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtsignalelement.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtsignalregistry.cc
+  ${UMLRTS_ROOT}/umlrt/umlrtsignalelementpool.cc
+  ${UMLRTS_ROOT}/umlrt/umlrttcpprotocol.cc
+  ${UMLRTS_ROOT}/umlrt/umlrttimerid.cc
+  ${UMLRTS_ROOT}/umlrt/umlrttimerpool.cc
+  ${UMLRTS_ROOT}/umlrt/umlrttimerprotocol.cc
+  ${UMLRTS_ROOT}/umlrt/umlrttimerqueue.cc
+  ${UMLRTS_ROOT}/umlrt/umlrttcpservice.cc
+  ${UMLRTS_ROOT}/umlrt/umlrttimespec.cc
+  ${UMLRTS_ROOT}/mqtt/src/Clients.cc
+  ${UMLRTS_ROOT}/mqtt/src/Heap.cc
+  ${UMLRTS_ROOT}/mqtt/src/LinkedList.cc
+  ${UMLRTS_ROOT}/mqtt/src/Log.cc
+  ${UMLRTS_ROOT}/mqtt/src/Messages.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTAsync.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTClient.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTPacket.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTPacketOut.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTPersistence.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTPersistenceDefault.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTProtocolClient.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTProtocolOut.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTVersion.cc
+  ${UMLRTS_ROOT}/mqtt/src/MQTTAsync.cc
+  ${UMLRTS_ROOT}/mqtt/src/OsWrapper.cc
+  ${UMLRTS_ROOT}/mqtt/src/Socket.cc
+  ${UMLRTS_ROOT}/mqtt/src/SocketBuffer.cc
+  ${UMLRTS_ROOT}/mqtt/src/SSLSocket.cc
+  ${UMLRTS_ROOT}/mqtt/src/StackTrace.cc
+  ${UMLRTS_ROOT}/mqtt/src/Thread.cc
+  ${UMLRTS_ROOT}/mqtt/src/Tree.cc
+  ${UMLRTS_ROOT}/mqtt/src/utf-8.cc
+  )
+    
+    
