@@ -26,3 +26,6 @@ out/
 build/
 !org.eclipse.papyrusrt.rts_1.0.0.201810091347/umlrts/build/
 !gradle-wrapper.jar
+
+# Generated UMLRT Demo Models
+demo/*.uml
