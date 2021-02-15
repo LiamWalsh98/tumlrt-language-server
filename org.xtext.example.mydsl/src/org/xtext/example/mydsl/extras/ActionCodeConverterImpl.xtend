@@ -43,44 +43,18 @@ class ActionCodeConverterImpl implements IValueConverter<String> {
 		s.substring(0, i)
 	}
 	
-	static def firstNonSpace( String s ) {
-		var i = 0
-		while (i < s.length && Character.isWhitespace(s.charAt(i))) {
-			i++
-		}
-		i
-	}
-	
-	static def longestLeadingSpace( String text ) {
-		var i = 0
-		var longest_length = 0
-		val lines = text.split("\n")
-		while (i < lines.length) {
-			val line = lines.get(i)
-			val lineLeadingSpace = firstNonSpace(line)
-			if (lineLeadingSpace > 0 && lineLeadingSpace > longest_length) {
-				longest_length = lineLeadingSpace
-			}
-			i++
-		}
-		longest_length 
-	}
-	
 	static def removeLeadingSpaces( String text ) {
-		val n = longestLeadingSpace( text )
 		val lines = text.split("\n")
-		val newText = lines.map[stringFrom(n)].join("\n")
+		val newText = lines.map[ltrim].join("\n")
 		newText
 	}
 	
-	static def stringFrom( String s, int n ) {
-		if (s === null) {
-			""
-		} else if (s.length < n) {
-			s
-		} else {
-			s.substring(n)
+	static def ltrim(String s) {
+		var i = 0;
+		while (i < s.length() && Character.isWhitespace(s.charAt(i))) {
+			i++;
 		}
+		s.substring(i);
 	}
 	
 	override toString(String value) throws ValueConverterException {
