@@ -12,12 +12,12 @@ model PingPong {
 				from start 
 				to playing
 				action {|#
-						xprintf("Starting game\n");
-						xif ( pingPort.ping().send() ) {
+						printf("Starting game\n");
+						if ( pingPort.ping().send() ) {
 							printf("ping sent!\n");
-						x} else {
+						} else {
 							printf("Error sending Ping!\n");
-						x}	
+						}	
 				#|}
 			;	
 			
@@ -26,12 +26,12 @@ model PingPong {
 				to playing
 				triggers on pingPort : pong 
 				action {|#
-					xprintf("Pong received!\n");
-					xif (pingPort.ping().send()) {
-						printf("Ping sent!\n");
-					x} else {
-						printf("Error sending Ping!\n");
-					x}
+					printf("[Pinger] Pong received!\n");
+					if (pingPort.ping().send()) {
+						printf("[Pinger] Ping sent!\n");
+					} else {
+						printf("[Pinger] Error sending Ping!\n");
+					}
 				#|}
 			;
 		}
@@ -55,12 +55,12 @@ model PingPong {
 				to playing
 				triggers on pongPort : ping 
 				action {|#
-					xprintf("Ping received!\n");
-					xif (pongPort.pong().send()){
-						printf("Pong sent!\n");
-					x} else {
-						printf("Error sending Pong!\n");
-					x}
+					printf("[Ponger] Ping received!\n");
+					if (pongPort.pong().send()){
+						printf("[Ponger] Pong sent!\n");
+					} else {
+						printf("[Ponger] Error sending Pong!\n");
+					}
 				#|}
 			;
 			
