@@ -1,17 +1,27 @@
-DIR=`dirname $0`
+if [ $# -eq 0 ]; then
+    echo "Please provide path to a model file as argument"
+    exit 1
+fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 IN="$DIR/demo/`basename $1`"
 OUT="$DIR/cpp"
 GENPATH="$DIR/cppgen.jar"
 OUTSRC="$OUT/src"
+UMLRTS_ROOT="$DIR/org.eclipse.papyrusrt.rts_1.0.0.201810091347/umlrts"
 
-
-
-echo $DIR
-echo $IN
-echo $OUT
-echo $GENPATH
+#echo $DIR
+#echo $IN
+#echo $OUT
+#echo $GENPATH
+#echo $UMLRTS_ROOT
 
 java -jar $GENPATH $IN --outdir $OUT
-make --directory $OUTSRC clean
-make --directory $OUTSRC
+make --directory $OUTSRC clean UMLRTS_ROOT=$UMLRTS_ROOT
+make --directory $OUTSRC UMLRTS_ROOT=$UMLRTS_ROOT
+
+echo --------------------------------------------
+echo Begin Execution: $(echo `basename $1` | cut -f 1 -d '.')
+echo --------------------------------------------
+
 $OUTSRC/TopMain
